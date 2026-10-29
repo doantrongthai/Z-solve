@@ -5,6 +5,13 @@ import time
 from collections import Counter
 from pathlib import Path
 
+root_directory = Path(__file__).resolve().parent.parent
+src_directory = root_directory / "src"
+if str(root_directory) not in sys.path:
+    sys.path.insert(0, str(root_directory))
+if str(src_directory) not in sys.path:
+    sys.path.insert(0, str(src_directory))
+
 from datamate.config import PipelineConfig
 from datamate.pipeline import DataMatePipeline
 

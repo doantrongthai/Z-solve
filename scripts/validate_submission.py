@@ -6,6 +6,13 @@ import sys
 from pathlib import Path
 from typing import Any
 
+root_directory = Path(__file__).resolve().parent.parent
+src_directory = root_directory / "src"
+if str(root_directory) not in sys.path:
+    sys.path.insert(0, str(root_directory))
+if str(src_directory) not in sys.path:
+    sys.path.insert(0, str(src_directory))
+
 from datamate.config import PipelineConfig
 
 DATE_PATTERN = re.compile(r"^\d{4}-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01]))?$")
