@@ -103,3 +103,4 @@ class LocalLLMClient:
             return python_block.group(1).strip()
         lines = [line for line in text.splitlines() if not line.strip().startswith("```")]
         return "\n".join(lines).strip()
+

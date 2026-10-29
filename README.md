@@ -42,7 +42,7 @@ Z-solve/
 
 ## 2. Hướng dẫn chạy trên Google Colab (GPU T4)
 
-### Trình tự các bước trên Colab:
+### Trình tự 1-Click trên Google Colab:
 
 1. **Kiểm tra GPU:**
    ```bash
@@ -56,16 +56,14 @@ Z-solve/
    !pip install -r requirements.txt -q
    ```
 
-3. **Chuẩn bị dữ liệu (`datamate/`):**
-   Tải hoặc giải nén thư mục `datamate/` (chứa `public_test/` hoặc `train/`) vào thư mục gốc `Z-solve/`:
+3. **Tải dữ liệu tự động từ Hugging Face:**
    ```bash
-   # Ví dụ giải nén từ Google Drive:
-   # from google.colab import drive
-   # drive.mount('/content/drive')
-   # !unzip -q /content/drive/MyDrive/datamate.zip -d .
+   !wget -q --show-progress https://huggingface.co/datasets/doantrongthai/ZAIC/resolve/main/datamate.zip
+   !mkdir -p datamate
+   !unzip -q -o datamate.zip -d datamate
    ```
 
-4. **Chạy Inference với LLM (chế độ 4-bit tối ưu cho T4):**
+4. **Chạy Inference với LLM (chế độ 4-bit tối ưu cho GPU T4):**
    ```bash
    !python scripts/run_inference.py \
        --split public_test \
@@ -83,7 +81,10 @@ Z-solve/
    ```
 
 6. **Tải file kết quả về máy để nộp:**
-   File `results/submission.jsonl` sẵn sàng tải về nộp lên cổng thi Zalo AI Challenge.
+   ```python
+   from google.colab import files
+   files.download('results/submission.jsonl')
+   ```
 
 ---
 

@@ -20,3 +20,4 @@ def test_extract_python_code_raw() -> None:
     text = "result = 100\nprint(result)"
     extracted = client.extract_python_code(text)
     assert "result = 100" in extracted
+
